@@ -87,6 +87,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String id ="3";
+                String strWord ="Banana";
+                String strMeaning ="banana";
+                String strSample = "This banana is very nice.";
             }
         });
     }
