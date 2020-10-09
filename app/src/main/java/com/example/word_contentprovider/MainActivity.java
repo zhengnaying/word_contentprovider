@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
                 String msg="";
-                if(c.moveToNext()){
+                if(c.moveToFirst()){
                     do{
                         msg += "ID : " + c.getString(c.getColumnIndex(Words.Word._ID)) +",";
                         msg += "单词:  " +c.getString(c.getColumnIndex(Words.Word.COLUMN_NAME_WORD))+",";
@@ -75,6 +75,13 @@ public class MainActivity extends AppCompatActivity {
                 String id="3";//简单起见，这里指定ID，用户可在程序中设置id的实际值
                 Uri uri = Uri.parse(Words.Word.CONTENT_URI_STRING);
                 int result = resolver.delete(uri, Words.Word._ID+"="+id, null);
+            }
+        });
+
+        buttonDeleteAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resolver.delete(Words.Word.CONTENT_URI,null,null);
             }
         });
 

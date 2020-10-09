@@ -15,8 +15,8 @@ public class Words {
         public static final String PATH_MULTIPLE = "words";//多条数据的路径
 
         //Content Uri
-        public static final String CONTENT_URI_STRING = "content://" + AUTHORITY + "/" + PATH_MULTIPLE;
-        public static final Uri CONTENT_URI = Uri.parse(CONTENT_URI_STRING);
+        public static final String CONTENT_URI_STRING = "content://" + AUTHORITY + "/" + Words.Word.TABLE_NAME;
+        public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + Words.Word.TABLE_NAME);
 
     }
 }
