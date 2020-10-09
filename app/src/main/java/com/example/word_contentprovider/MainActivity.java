@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
                 String strSample="This banana is very nice.";
                 ContentValues values = new ContentValues();
 
+                values.put(Words.Word._ID,"3");
                 values.put(Words.Word.COLUMN_NAME_WORD, strWord);
                 values.put(Words.Word.COLUMN_NAME_MEANING, strMeaning);
                 values.put(Words.Word.COLUMN_NAME_SAMPLE, strSample);
