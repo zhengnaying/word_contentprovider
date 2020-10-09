@@ -96,12 +96,12 @@ public class MainActivity extends AppCompatActivity {
                 String strSample="This banana is very nice.";
                 ContentValues values = new ContentValues();
 
+                values.put(Words.Word._ID,id);
                 values.put(Words.Word.COLUMN_NAME_WORD, strWord);
                 values.put(Words.Word.COLUMN_NAME_MEANING, strMeaning);
                 values.put(Words.Word.COLUMN_NAME_SAMPLE, strSample);
 
-                Uri uri = Uri.parse(Words.Word.CONTENT_URI_STRING );
-                int result = resolver.update(uri, values, Words.Word._ID+"="+id, null);
+                 resolver.update(Words.Word.CONTENT_URI, values, Words.Word._ID+"="+id, null);
 
             }
         });
@@ -115,10 +115,7 @@ public class MainActivity extends AppCompatActivity {
                 Cursor cursor = resolver.query(Words.Word.CONTENT_URI,
                         null,
                         Words.Word._ID+"="+id, null, null);
-                if (cursor == null){
-                    Toast.makeText(MainActivity.this,"没有找到记录",Toast.LENGTH_LONG).show();
-                    return;
-                }
+
 
                 //找到记录，这里简单起见，使用Log输出
 
@@ -131,7 +128,11 @@ public class MainActivity extends AppCompatActivity {
                         msg += "示例" + cursor.getString(cursor.getColumnIndex(Words.Word.COLUMN_NAME_SAMPLE)) + "\n";
                     }while(cursor.moveToNext());
                 }
-
+                if (msg == ""){
+                    Toast.makeText(MainActivity.this,"没有找到记录",Toast.LENGTH_LONG).show();
+                    return;
+                }
+                else
                 Log.v(TAG,msg);
             }
         });
